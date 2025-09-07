@@ -5,6 +5,7 @@ import "./server"
 
 import Home from "./pages/Home"
 import About from "./pages/About"
+import NotFound from "./pages/NotFound"
 import Van from "./pages/Van"
 import VanDetail from "./pages/VanDetail"
 import Layout from "./components/Layout"
@@ -28,7 +29,7 @@ const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route element={<Layout />}>
+                <Route element={<Layout />}>                    
                     <Route path="/" element={<Home />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/vans" element={<Van />} />
@@ -48,6 +49,7 @@ const App = () => {
                         </Route>
                         
                     </Route>
+                    <Route path="*" element={<NotFound />} />
 
                 </Route>
             </Routes>

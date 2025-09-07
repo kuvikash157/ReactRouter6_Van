@@ -1,16 +1,28 @@
 import React, { useState , useEffect } from "react"
-import { Link , useParams } from "react-router-dom"
+import { Link , useParams, useLocation } from "react-router-dom"
+import Loading from "../components/Loading"
 const VanDetail = () =>{
+
 const params = useParams()
 const [van , setVan] = useState(null)
+const location = useLocation();
+const search = location.state?.search || "";
+const type = location.state?.type || "all";
+
+console.log(location);
+
 useEffect(() => {
     fetch(`/api/vans/${params.id}`)
     .then(res=> res.json())
     .then(data => setVan(data.vans))
 },[params.id])
 
+
     return(
+        
        <div className="van-detail-container">
+        {/* <Link to=".." relative="path" className="back-button">&larr; <span>Back to all vans</span> </Link> */}
+         <Link to={`..${search}` } relative="path" className="back-button">&larr; <span>{ `Back to ${type} vans`}</span> </Link>
         {van ? (
             <div className="van-detail">
                 <img src={van.imageUrl} alt={van.name} />
@@ -22,7 +34,8 @@ useEffect(() => {
                 <Link to="/vans" className="back-button">Back to all vans</Link>
             </div> 
         ) : (
-            <h2>Loading...</h2>          
+            <Loading />
+            // <h2>Loading...</h2>          
            
         )}
         </div>
