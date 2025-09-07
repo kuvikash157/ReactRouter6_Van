@@ -12,7 +12,6 @@ const Van = () => {
     //const [vans, setVans] = useState([]);
     const vans = useLoaderData();
     const [searchParam, setSearchParam] = useSearchParams({});
-    const [error, setError] = useState(null);
     const typeFilter = searchParam.get("type");
 
     useEffect(() => {
@@ -47,10 +46,6 @@ const Van = () => {
             newSearchParams.set(key, value);
             return `?${newSearchParams.toString()}`;
         }
-    }
-
-    if (error) {
-        return <h2 className="error-message">Error: {error}</h2>
     }
 
     return (

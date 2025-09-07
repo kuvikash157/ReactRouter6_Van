@@ -17,7 +17,7 @@ import Pricing from "./pages/Host/HostVanComponent/Pricing"
 import Photos from "./pages/Host/HostVanComponent/Photos"
 import More from "./pages//Host/HostVanComponent/More"
 
-
+import Error from "./components/Error"
 import Layout from "./components/Layout"
 import HostLayout from "./components/HostLayout"
 
@@ -26,7 +26,7 @@ const route = createBrowserRouter( createRoutesFromElements (
     <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/vans" element={<Van />}  loader={vansLoader} />
+            <Route path="/vans" element={<Van />}  loader={vansLoader} errorElement={<Error />} />
             <Route path="/vans/:id" element={<VanDetail />} />
 
             {/* Compound component or nested route with parent element as HostLayout which have outlet which is the rendering point of children route  */}
