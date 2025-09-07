@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link, useParams, Outlet } from "react-router-dom"
 import HostVanDetailLayout from "../../components/HostVanDetailLayout"
-
+import Loading from "../../components/Loading"
 
 const HostVanDetail = () => {
 
@@ -34,7 +34,7 @@ const HostVanDetail = () => {
                     </div>
                 </>
             )
-                : (<h2>Loading...</h2>)
+                : ( <Loading />)
             }
         </div>
     )
